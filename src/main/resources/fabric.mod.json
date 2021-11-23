@@ -1,38 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "updateblockentity",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "UpdateBlockEntity",
+  "description": "Fixes block entity data corruption in 1.18 world upgrade",
   "authors": [
-    "Me!"
+    "apple502j"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/apple502j/UpdateBlockEntity"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "Apache-2.0",
+  "icon": "assets/updateblockentity/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "io.github.apple502j.updateblockentity.UpdateBlockEntityMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "updateblockentity.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
-    "fabric": "*",
     "minecraft": "1.18.x",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
