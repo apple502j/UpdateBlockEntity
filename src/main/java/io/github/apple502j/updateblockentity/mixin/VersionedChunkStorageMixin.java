@@ -4,6 +4,7 @@ import com.mojang.datafixers.DataFixer;
 import com.mojang.serialization.Codec;
 import io.github.apple502j.updateblockentity.UpdateBlockEntityMod;
 import io.github.apple502j.updateblockentity.UpdateBlockEntityUtils;
+import net.minecraft.SharedConstants;
 import net.minecraft.datafixer.DataFixTypes;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -60,6 +61,9 @@ public class VersionedChunkStorageMixin {
         }
         if (blockEntities.size() > 0) {
             UpdateBlockEntityMod.LOGGER.info("Updating " + blockEntities.size() + " block entities");
+            for (int i = 0; i < blockEntities.size(); i++) {
+                blockEntities.set(i, UpdateBlockEntityUtils.update(this.dataFixer, nbt, SharedConstants.getGameVersion().getWorldVersion()));
+            }
             nbt.put("block_entities", blockEntities);
         }
         context.remove(UpdateBlockEntityUtils.KEY);
