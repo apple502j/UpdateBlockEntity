@@ -62,7 +62,8 @@ public class VersionedChunkStorageMixin {
         if (blockEntities.size() > 0) {
             UpdateBlockEntityMod.LOGGER.info("Updating " + blockEntities.size() + " block entities");
             for (int i = 0; i < blockEntities.size(); i++) {
-                blockEntities.set(i, UpdateBlockEntityUtils.update(this.dataFixer, nbt, SharedConstants.getGameVersion().getWorldVersion()));
+                NbtCompound blockEntityNbt = blockEntities.getCompound(i);
+                blockEntities.set(i, UpdateBlockEntityUtils.update(this.dataFixer, blockEntityNbt, SharedConstants.getGameVersion().getWorldVersion()));
             }
             nbt.put("block_entities", blockEntities);
         }
